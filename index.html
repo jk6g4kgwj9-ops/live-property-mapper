@@ -21,13 +21,17 @@
       <div class="model-wrap">
         <model-viewer id="model" camera-controls auto-rotate shadow-intensity="1" alt="3D house model"></model-viewer>
         <div id="model-fallback" class="model-fallback" hidden>
-          <p>The 3D model file has not been uploaded yet.</p>
-          <a id="model-source" target="_blank" rel="noopener noreferrer">Open model source</a>
+          <p>The 3D model file is not available in the repository yet.</p>
+          <a id="model-source" target="_blank" rel="noopener noreferrer">Open Meshy source</a>
         </div>
+      </div>
+      <div class="action-buttons">
+        <button id="view-btn" class="btn btn-primary" type="button">View 3D House</button>
+        <a id="download-btn" class="btn btn-secondary" href="models/simone-karin-home.glb" download="simone-karin-home.glb">Download 3D Model</a>
       </div>
     </aside>
   </main>
-  <footer>Coordinates are approximate and publicly visible. Only publish locations you have permission to share.</footer>
+  <footer>Coordinates are publicly visible. Only publish locations you have permission to share.</footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
   <script src="app.js"></script>

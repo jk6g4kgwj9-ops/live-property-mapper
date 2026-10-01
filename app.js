@@ -10,6 +10,9 @@ const addressEl = document.getElementById('property-address');
 const modelEl = document.getElementById('model');
 const fallbackEl = document.getElementById('model-fallback');
 const sourceEl = document.getElementById('model-source');
+const downloadBtn = document.getElementById('download-btn');
+const viewBtn = document.getElementById('view-btn');
+let selectedProperty;
 
 fetch('data/properties.json')
   .then(response => {
@@ -29,18 +32,25 @@ fetch('data/properties.json')
   });
 
 function showProperty(property) {
+  selectedProperty = property;
   nameEl.textContent = property.name;
-  addressEl.textContent = property.address;
+  addressEl.textContent = `📍 ${property.address}`;
+  sourceEl.href = property.sourceUrl || 'https://www.meshy.ai/s/sDfnDN';
+  downloadBtn.href = property.model;
   details.hidden = false;
-  modelEl.removeAttribute('src');
+  loadModel();
+}
+
+function loadModel() {
+  if (!selectedProperty) return;
+  modelEl.style.display = '';
   fallbackEl.hidden = true;
-  sourceEl.href = 'https://www.meshy.ai/s/sDfnDN';
+  modelEl.removeAttribute('src');
   modelEl.addEventListener('error', showFallback, { once: true });
-  modelEl.src = property.model;
-  // A missing local file may not emit an error consistently in every browser.
-  setTimeout(() => {
-    if (!modelEl.loaded) showFallback();
-  }, 1200);
+  modelEl.src = selectedProperty.model;
+  window.setTimeout(() => {
+    if (!modelEl.loaded && modelEl.src.endsWith(selectedProperty.model)) showFallback();
+  }, 1500);
 }
 
 function showFallback() {
@@ -48,7 +58,8 @@ function showFallback() {
   fallbackEl.hidden = false;
 }
 
+viewBtn.addEventListener('click', loadModel);
 document.getElementById('close').addEventListener('click', () => {
   details.hidden = true;
-  modelEl.style.display = '';
+  modelEl.removeAttribute('src');
 });
