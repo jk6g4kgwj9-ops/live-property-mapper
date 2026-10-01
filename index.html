@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Property Mapper</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3cYjS5eQe5s5jM1w5sP2jJ6w2w3w0=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div><h1>Live Property Mapper</h1><p>Homes and structures on a map</p></div>
+    <span class="status" aria-label="Public map">Public map</span>
+  </header>
+  <main>
+    <section id="map" aria-label="Property map"></section>
+    <aside class="details" id="details" hidden>
+      <button class="close" id="close" aria-label="Close property details">×</button>
+      <h2 id="property-name"></h2>
+      <p id="property-address"></p>
+      <div class="model-wrap">
+        <model-viewer id="model" camera-controls auto-rotate shadow-intensity="1" alt="3D house model"></model-viewer>
+        <div id="model-fallback" class="model-fallback" hidden>
+          <p>The 3D model file has not been uploaded yet.</p>
+          <a id="model-source" target="_blank" rel="noopener noreferrer">Open model source</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <footer>Coordinates are approximate and publicly visible. Only publish locations you have permission to share.</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
