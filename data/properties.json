@@ -1,0 +1,12 @@
+[
+  {
+    "id": "simone-karin-home",
+    "name": "Simone & Karin Home",
+    "address": "Via Sant’Anna 8, 95124 Catania, Italy",
+    "latitude": 37.501705,
+    "longitude": 15.083901,
+    "type": "3d-house",
+    "visibility": "public",
+    "model": "simone-karin-home.glb"
+  }
+]
