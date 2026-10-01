@@ -3,35 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live Property Mapper</title>
+  <meta name="description" content="Public live map showing Simone & Karin Home in Catania, Italy.">
+  <meta name="theme-color" content="#172033">
+  <title>Simone & Karin Home | Live Property Mapper</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3cYjS5eQe5s5jM1w5sP2jJ6w2w3w0=" crossorigin="">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <div><h1>Live Property Mapper</h1><p>Homes and structures on a map</p></div>
-    <span class="status" aria-label="Public map">Public map</span>
+    <div><p class="eyebrow">LIVE PROPERTY MAPPER</p><h1>Simone &amp; Karin Home</h1><p class="subtitle">A public map and 3D property showcase</p></div>
+    <span class="status" id="status">Public listing</span>
   </header>
   <main>
-    <section id="map" aria-label="Property map"></section>
-    <aside class="details" id="details" hidden>
+    <section class="intro" aria-labelledby="intro-title">
+      <div><p class="eyebrow">Catania, Sicily</p><h2 id="intro-title">Explore the property on the live map</h2><p>Select the marker to view the address, coordinates, and available 3D house model.</p></div>
+      <a class="jump-link" href="#map">Open map <span aria-hidden="true">↓</span></a>
+    </section>
+    <section id="map" aria-label="Public property map"></section>
+    <aside class="details" id="details" hidden aria-labelledby="property-name">
       <button class="close" id="close" aria-label="Close property details">×</button>
+      <p class="eyebrow">PROPERTY DETAILS</p>
       <h2 id="property-name"></h2>
-      <p id="property-address"></p>
+      <p id="property-address" class="address"></p>
+      <dl class="coordinates">
+        <div><dt>Latitude</dt><dd id="property-latitude"></dd></div>
+        <div><dt>Longitude</dt><dd id="property-longitude"></dd></div>
+      </dl>
       <div class="model-wrap">
         <model-viewer id="model" camera-controls auto-rotate shadow-intensity="1" alt="3D house model"></model-viewer>
-        <div id="model-fallback" class="model-fallback" hidden>
-          <p>The 3D model file is not available in the repository yet.</p>
-          <a id="model-source" target="_blank" rel="noopener noreferrer">Open Meshy source</a>
-        </div>
+        <div id="model-fallback" class="model-fallback" hidden><p>The GLB model has not been uploaded yet.</p><a id="model-source" target="_blank" rel="noopener noreferrer">Open Meshy source</a></div>
       </div>
-      <div class="action-buttons">
-        <button id="view-btn" class="btn btn-primary" type="button">View 3D House</button>
-        <a id="download-btn" class="btn btn-secondary" href="models/simone-karin-home.glb" download="simone-karin-home.glb">Download 3D Model</a>
-      </div>
+      <div class="action-buttons"><button id="view-btn" class="btn btn-primary" type="button">View 3D House</button><a id="download-btn" class="btn btn-secondary" href="models/simone-karin-home.glb" download="simone-karin-home.glb">Download 3D Model</a></div>
     </aside>
+    <section class="info-grid" aria-label="About this listing">
+      <article><span class="info-icon" aria-hidden="true">📍</span><h2>Location</h2><p>Via Sant’Anna 8<br>95124 Catania CT, Italy</p></article>
+      <article><span class="info-icon" aria-hidden="true">🏠</span><h2>Property type</h2><p>3D house / building marker with an interactive model viewer.</p></article>
+      <article><span class="info-icon" aria-hidden="true">🌐</span><h2>Public listing</h2><p>This entry is intentionally visible to visitors. Share this page only with people you trust.</p></article>
+    </section>
+    <section class="instructions" aria-labelledby="instructions-title"><h2 id="instructions-title">How to use the map</h2><ol><li>Zoom or pan the map to explore the area.</li><li>Select the property marker to open its details.</li><li>Use the 3D controls to rotate and zoom the house when the model is available.</li></ol></section>
+    <section class="privacy" aria-labelledby="privacy-title"><h2 id="privacy-title">Public-location notice</h2><p>This page publishes an exact residential address and GPS coordinates. Only keep this listing public if all residents and owners have agreed. You can make it private at any time by changing <code>visibility</code> in <code>data/properties.json</code>.</p></section>
   </main>
-  <footer>Coordinates are publicly visible. Only publish locations you have permission to share.</footer>
+  <footer><p>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p><p>Live Property Mapper · Public property showcase</p></footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
   <script src="app.js"></script>

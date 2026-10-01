@@ -1,41 +1,36 @@
 # Live Property Mapper
 
-A static Leaflet map for publicly visible property markers with optional GLB models.
+A public live map and 3D property showcase for Simone & Karin Home in Catania, Italy.
 
-## Project structure
+## Included sections
 
-```text
-index.html
-styles.css
-app.js
-data/properties.json
-models/simone-karin-home.glb
-```
+- Public Leaflet map with the property marker
+- Property details with address and exact coordinates
+- 3D model viewer and download controls
+- Location, property-type, and public-listing information cards
+- Map usage instructions and a prominent public-location notice
+- OpenStreetMap attribution and responsive mobile layout
 
-## Add the 3D model
+## 3D model
 
-Download the model and upload it as `models/simone-karin-home.glb`. The map loads that local file in Google's `model-viewer`, and the property panel provides view and download controls. Until the file is uploaded, the panel links to the Meshy source page.
+Upload the binary file as `models/simone-karin-home.glb`. Until it is present, the details panel links to the Meshy source page.
 
 ## Run locally
-
-Use a local HTTP server so JSON and GLB requests work correctly:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000> and click the map marker.
+Open <http://localhost:8000> and select the marker.
 
 ## GitHub Pages
 
-Enable **Settings → Pages → Deploy from branch → `main` → `/ (root)`**. The model URL will be:
+Enable **Settings → Pages → Deploy from branch → `main` → `/ (root)`**. The expected URL is:
 
 ```text
-https://jk6g4kgwj9-ops.github.io/live-property-mapper/models/simone-karin-home.glb
+https://jk6g4kgwj9-ops.github.io/live-property-mapper/
 ```
 
-The repository currently contains the property record and app, but not the binary GLB file. Upload that file before expecting the 3D viewer or download button to work.
+## Privacy and consent
 
-## Privacy
-
-This record is public and contains an exact residential address and coordinates. Keep `visibility` set to `private` or use approximate coordinates if you do not want the home publicly identifiable.
+The listing is currently public and publishes an exact residential address and GPS coordinates. Only keep it public with permission from everyone whose privacy may be affected. To hide it, change `visibility` to `private` in `data/properties.json`; the app will not render private entries.
